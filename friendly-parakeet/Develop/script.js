@@ -3,6 +3,17 @@ var lowercase;
 var uppercase;
 var numeric;
 var spchar;
+var charLength;
+
+var lowercaseChar = ['a','b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+var uppercaseChar = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+var numericChar = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+var spcharChar = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '-', '=', "{", "}", '[', ']', '|', ";", ":", ',', '?', '>', '<', '`', '~']
+
+var userinput = [];
+var password = [];
+
+
 
 function generatePassword() {
 var charLength;
@@ -10,6 +21,7 @@ charLength = prompt('How many characters do you want your password to be? Must b
 
 if (charLength >= 8 && charLength <= 128) {
 alert(`Your password will be ${charLength} characters long.`);
+criteria ();
 }
 
 else {
@@ -17,54 +29,59 @@ else {
 
 return generatePassword();
 }
+}
 
-
+function criteria() {
 lowercase = confirm('Do you want your password to include lowercase?');
-if (lowercase) {
-  alert('Your password will include lowercase.')
-}
-else {
-  alert('Your password will NOT include lowercase.')
-}
-console.log(lowercase);
-
 
 uppercase = confirm('Do you want your password to include uppercase?');
-if (uppercase) {
-  alert('Your password will include uppercase.')
-}
-else {
-  alert('Your password will NOT include uppercase.')
-}
-console.log(uppercase);
-
 
 numeric = confirm('Do you want your password to include numbers?');
-if (numeric) {
-  alert('Your password will include numbers.')
-}
-else {
-  alert('Your password will NOT include numbers.')
-}
-console.log(numeric);
-
 
 spchar = confirm('Do you want your password to include special characters?');
-if (spchar) {
-  alert('Your password will include special characters.')
-}
-else {
-  alert('Your password will NOT include characters.')
-}
-console.log(spchar);
 
 if (lowercase || uppercase || numeric || spchar) {
   alert('You have selected the criteria for your password')
+  criteriaResults();
 }
 else {
   alert('You must make at least one criteria selection. Try again.')
+  return criteria();
 }
 }
+
+function criteriaResults() {
+  if (lowercase) {
+    userinput.push(lowercaseChar);
+  }
+
+  if (uppercase) {
+    userinput.push(uppercaseChar);
+  }
+
+  if (numeric) {
+    userinput.push(numericChar);
+  }
+
+  if (spcharChar) {
+    userinput.push(spcharChar);
+  }
+
+  console.log(userinput);
+  generator();
+}
+
+function generator() {
+
+  for (var characters = 1; characters <= charLength; characters++) {
+    characters = userinput[Math.floor(Math.Random() * charLength)];
+    characters.push(password);
+  console.log(password);
+  }
+  var passwordText = password.toString();
+  console.log(passwordText);
+}
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
