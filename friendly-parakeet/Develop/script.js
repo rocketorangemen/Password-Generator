@@ -72,14 +72,16 @@ function criteriaResults() {
 }
 
 function generator() {
+            console.log("test");
+  // characters =userinput[Math.floor(Math.random() * charLength.length)];
 
-  for (var characters = 1; characters <= charLength; characters++) {
-    characters = userinput[Math.floor(Math.Random() * charLength)];
-    characters.push(password);
-  console.log(password);
-  }
-  var passwordText = password.toString();
-  console.log(passwordText);
+  //   for (var characters = 1; characters <= charLength; characters++) {
+  //   characters.push(password);
+
+  // console.log(password);
+  // }
+  // var passwordText = password.toString();
+  // console.log(passwordText);
 }
 
 
