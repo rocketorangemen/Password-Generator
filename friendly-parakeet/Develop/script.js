@@ -4,30 +4,39 @@ var uppercase;
 var numeric;
 var spchar;
 var charLength;
+var characters;
 
+//  Actual characters in password
 var lowercaseChar = ['a','b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 var uppercaseChar = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 var numericChar = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
-var spcharChar = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '-', '=', "{", "}", '[', ']', '|', ";", ":", ',', '?', '>', '<', '`', '~']
+var spcharChar = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '-', '=', "{", "}", '[', ']', '|', ";", ":", '?', '>', '<', '`', '~']
 
+// What the user wants in their password
 var userinput = [];
+// The characters generated for Char variables at random from userinput
+var characters = [];
+// The actual password
 var password = [];
 
 
 
 function generatePassword() {
-var charLength;
 charLength = prompt('How many characters do you want your password to be? Must be between 8 and 128 characters.');
-
+console.log(charLength);
 if (charLength >= 8 && charLength <= 128) {
 alert(`Your password will be ${charLength} characters long.`);
 criteria ();
 }
 
+else if (charLength === null){
+  return;
+}
+
 else {
   alert('Invalid Response. Please try again.')
 
-return generatePassword();
+generatePassword();
 }
 }
 
@@ -46,7 +55,7 @@ if (lowercase || uppercase || numeric || spchar) {
 }
 else {
   alert('You must make at least one criteria selection. Try again.')
-  return criteria();
+  criteria();
 }
 }
 
@@ -67,21 +76,33 @@ function criteriaResults() {
     userinput.push(spcharChar);
   }
 
-  console.log(userinput);
+  nocommas = userinput.join("")
   generator();
 }
 
+
 function generator() {
-            console.log("test");
-  // characters =userinput[Math.floor(Math.random() * charLength.length)];
+// console.log(charLength);
+// console.log(userinput);
+// console.log(characters);
+var straight = userinput.join("");
+console.log(straight);
+console.log(userinput);
+    for (var i = 0; i < charLength; i++) {
 
-  //   for (var characters = 1; characters <= charLength; characters++) {
-  //   characters.push(password);
+      characters = straight[Math.floor(Math.random() * straight.length)];
+console.log(characters);
+      // characters.toString();
+      password.push(characters);
 
-  // console.log(password);
-  // }
-  // var passwordText = password.toString();
-  // console.log(passwordText);
+      // console.log(characters);
+      console.log(password);
+    }
+
+     var passwordText = password.join("");
+  console.log(passwordText);
+
+  alert(`Your password is ${passwordText}`)
 }
 
 
