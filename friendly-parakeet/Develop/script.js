@@ -20,10 +20,12 @@ var characters = [];
 var password = [];
 
 
-
+// Button click initiator
 function generatePassword() {
 charLength = prompt('How many characters do you want your password to be? Must be between 8 and 128 characters.');
-console.log(charLength);
+
+// console.log(charLength);
+
 if (charLength >= 8 && charLength <= 128) {
 alert(`Your password will be ${charLength} characters long.`);
 criteria ();
@@ -40,6 +42,7 @@ generatePassword();
 }
 }
 
+// User criteria for password generator
 function criteria() {
 lowercase = confirm('Do you want your password to include lowercase?');
 
@@ -59,6 +62,7 @@ else {
 }
 }
 
+// Applying criteria to password
 function criteriaResults() {
   if (lowercase) {
     userinput.push(lowercaseChar);
@@ -76,33 +80,34 @@ function criteriaResults() {
     userinput.push(spcharChar);
   }
 
-  nocommas = userinput.join("")
   generator();
 }
 
-
+// Creating password
 function generator() {
 // console.log(charLength);
 // console.log(userinput);
-// console.log(characters);
+
 var straight = userinput.join("");
-console.log(straight);
-console.log(userinput);
+// console.log(straight);
+
     for (var i = 0; i < charLength; i++) {
 
       characters = straight[Math.floor(Math.random() * straight.length)];
-console.log(characters);
+      // console.log(characters);
       // characters.toString();
       password.push(characters);
 
       // console.log(characters);
-      console.log(password);
+      // console.log(password);
     }
 
      var passwordText = password.join("");
-  console.log(passwordText);
+      // console.log(passwordText);
 
   alert(`Your password is ${passwordText}`)
+  alert("Refresh page to generate a completely new password!")
+  alert(`Again. Your password is ${passwordText}`)
 }
 
 
